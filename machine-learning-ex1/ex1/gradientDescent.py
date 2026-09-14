@@ -6,16 +6,16 @@ def gradient_descent(X, y, theta, alpha, num_iters):
     # Initialize some useful values
     m = y.size
     J_history = np.zeros(num_iters)
+    alpha = 0.0015
+    num_iters = 450 
 
     for i in range(0, num_iters):
-        # ===================== Your Code Here =====================
-        # Instructions : Perform a single gradient step on the parameter vector theta
-        #
-        # Hint: X.shape = (97, 2), y.shape = (97, ), theta.shape = (2, )
+        h = np.dot(X,theta)
+        error = h - y
+        if ( i % 50 == 0):
+            print(" epoch : {i}")
 
-
-        # ===========================================================
-        # Save the cost every iteration
+        theta -= alpha*(1/m)*np.dot(X.T,error)
         J_history[i] = compute_cost(X, y, theta)
 
     return theta, J_history
@@ -30,6 +30,8 @@ def gradient_descent_multi(X, y, theta, alpha, num_iters):
         # ===================== Your Code Here =====================
         # Instructions : Perform a single gradient step on the parameter vector theta
         #
+        error = np.dot(X, theta) - y
+        theta = theta - (alpha / m) * np.dot(X.T, error)
 
 
         # ===========================================================
