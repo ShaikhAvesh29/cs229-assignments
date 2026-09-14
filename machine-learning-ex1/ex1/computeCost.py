@@ -5,7 +5,7 @@ def compute_cost(X, y, theta):
     # Initialize some useful values
     m = y.size
     cost = 0
-    hypotheis = np.dot(theta,X)
+    hypotheis = np.dot(X,theta)
 
     cost = (1/m)*(hypothesis - y)**2
 
